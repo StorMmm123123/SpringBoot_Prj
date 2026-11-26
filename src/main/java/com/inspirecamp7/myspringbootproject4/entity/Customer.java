@@ -1,6 +1,7 @@
 package com.inspirecamp7.myspringbootproject4.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -16,6 +17,7 @@ public class Customer {
     @Column(nullable = false)
     private String customerName;
 
-    @Column()
+    @Column(nullable = false, updatable = false)
+    @CreationTimestamp
     LocalDateTime createdAt = LocalDateTime.now();
 }
