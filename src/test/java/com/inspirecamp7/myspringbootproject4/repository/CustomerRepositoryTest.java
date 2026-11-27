@@ -13,6 +13,12 @@ class CustomerRepositoryTest {
 
     @Test
     void testInsert() {
+        //Given-When-Then
+        //Given (준비단계)
+
+        //When (실행단계)
+
+        //Then (검증단계)
 
     }
 }
