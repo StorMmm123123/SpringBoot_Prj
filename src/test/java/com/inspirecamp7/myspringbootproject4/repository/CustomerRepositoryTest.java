@@ -47,8 +47,11 @@ class CustomerRepositoryTest {
     //3.Customer 조회 ( 값이 일치하는 Customer 존재하지 않는 경우 )
     @Test
     void testReadNotFound() {
+        //Optional orElseGet(Supplier supplier)
+        //함수형인터페이스 Supplier 추상메서드 T get()
         Customer customer = customerRepository.findByCustomerId("B001")  //Optional<Customer>
-                .orElseGet();
+                .orElseGet(() -> new Customer());
+
     }
 
 }
