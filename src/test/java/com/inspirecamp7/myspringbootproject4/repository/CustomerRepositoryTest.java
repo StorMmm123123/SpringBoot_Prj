@@ -63,7 +63,9 @@ class CustomerRepositoryTest {
 
     @Test
     void testReadNotFoundException() {
-
+        Customer existCustomer = customerRepository.findByCustomerId("B001")
+                .orElseThrow(() -> new RuntimeException("Customer Not Found"));
+        assertThat(existCustomer.getCustomerId()).isNotNull();
     }
 
 }
