@@ -61,4 +61,9 @@ class CustomerRepositoryTest {
         assertThat(notExistCustomer.getCustomerId()).isNull();
     }
 
+    @Test
+    void testReadNotFoundException() {
+
+    }
+
 }
