@@ -4,6 +4,8 @@ import com.inspirecamp7.myspringbootproject4.entity.Customer;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -11,28 +13,39 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
+//@Transactional
 class CustomerRepositoryTest {
     @Autowired
     CustomerRepository customerRepository;
 
     //1.Customer 등록
     @Test
+    @Transactional
+    //등록한 데이터를 반드시 확인하고 싶으니 Rollback 처리를 하지 마세요
+    @Rollback(value = false)
     void testInsert() {
         //Given-When-Then
         //Given (준비단계)
         Customer customer = new Customer();
-        customer.setCustomerId("B001");
-        customer.setCustomerName("스프링B");
+        customer.setCustomerId("AB001");
+        customer.setCustomerName("스프링AB");
         //When (실행단계)
         Customer addedCustomer = customerRepository.save(customer);
         //Then (검증단계)
         assertThat(addedCustomer).isNotNull();
-        assertThat(addedCustomer.getCustomerId()).isEqualTo("B001");
-        assertThat(addedCustomer.getCustomerName()).isEqualTo("스프링B");
+        assertThat(addedCustomer.getCustomerId()).isEqualTo("AB001");
+        assertThat(addedCustomer.getCustomerName()).isEqualTo("스프링AB");
     }
 
+    //Customer 수정
+    @Test
+    void testUpdate() {
+
+    }
+    
     //2.Customer 조회 ( 값이 일치하는 Customer 존재하는 경우 )
     @Test
+    @Transactional(readOnly = true)
     void testRead() {
         Optional<Customer> optionalCustomer = customerRepository.findByCustomerId("B001");
         //Optional이 담고 있는 Customer가 값을 가지고 있으면?
