@@ -13,6 +13,7 @@ class CustomerRepositoryTest {
     @Autowired
     CustomerRepository customerRepository;
 
+    //1.Customer 등록
     @Test
     void testInsert() {
         //Given-When-Then
@@ -26,5 +27,11 @@ class CustomerRepositoryTest {
         assertThat(addedCustomer).isNotNull();
         assertThat(addedCustomer.getCustomerId()).isEqualTo("B001");
         assertThat(addedCustomer.getCustomerName()).isEqualTo("스프링B");
+    }
+
+    //2.Customer 조회
+    @Test
+    void testRead() {
+
     }
 }
