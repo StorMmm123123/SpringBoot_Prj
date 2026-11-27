@@ -49,13 +49,16 @@ class CustomerRepositoryTest {
     void testReadNotFound() {
         //Optional orElseGet(Supplier supplier)
         //함수형인터페이스 Supplier 추상메서드 T get()
-        Customer customer = customerRepository.findByCustomerId("F001")  //Optional<Customer>
+
+        Customer existCustomer = customerRepository.findByCustomerId("B001")  //Optional<Customer>
                 .orElseGet(() -> new Customer());
         //Customer가 값이 있는 경우는 성공함
-        //assertThat(customer.getCustomerId()).isNotNull();
-        
+        assertThat(existCustomer.getCustomerId()).isNotNull();
+
+        Customer notExistCustomer = customerRepository.findByCustomerId("F001")  //Optional<Customer>
+                .orElseGet(() -> new Customer());
         //Customer가 값이 없는 경우는 성공함
-        assertThat(customer.getCustomerId()).isNull();
+        assertThat(notExistCustomer.getCustomerId()).isNull();
     }
 
 }
