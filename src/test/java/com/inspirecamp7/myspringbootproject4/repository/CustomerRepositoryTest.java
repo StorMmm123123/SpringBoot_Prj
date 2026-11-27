@@ -35,6 +35,10 @@ class CustomerRepositoryTest {
     @Test
     void testRead() {
         Optional<Customer> optionalCustomer = customerRepository.findByCustomerId("B001");
+        //Optional이 담고 있는 Customer가 값을 가지고 있으면?
+        if(optionalCustomer.isPresent()){
+            Customer existCustomer = optionalCustomer.get();
+        }
 
     }
 }
