@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "customers")
 public class Customer {
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, unique = true)
@@ -20,4 +20,7 @@ public class Customer {
     @Column(nullable = false, updatable = false)
     @CreationTimestamp
     LocalDateTime createdAt = LocalDateTime.now();
+
+
+//    private String customerAddress;
 }
