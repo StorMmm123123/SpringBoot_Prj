@@ -31,7 +31,7 @@ class CustomerRepositoryTest {
         assertThat(addedCustomer.getCustomerName()).isEqualTo("스프링B");
     }
 
-    //2.Customer 조회
+    //2.Customer 조회 ( 값이 일치하는 Customer 존재하는 경우 )
     @Test
     void testRead() {
         Optional<Customer> optionalCustomer = customerRepository.findByCustomerId("B001");
@@ -42,6 +42,12 @@ class CustomerRepositoryTest {
         }
         //함수형 인터페이스 Customer 의 추상메서드 void accept(T t)
         optionalCustomer.ifPresent(customer -> System.out.println(customer.getCustomerName()));
+    }
+
+    //3.Customer 조회 ( 값이 일치하는 Customer 존재하지 않는 경우 )
+    @Test
+    void testReadNotFound() {
 
     }
+
 }
