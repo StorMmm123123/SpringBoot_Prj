@@ -38,6 +38,11 @@ class CustomerRepositoryTest {
     }
 
     //Customer 수정
+    /*  Native Query
+         update customers set customer_name = '스프링A' where customer_id = 'A001';
+        Hibernate 가 생성한 Query
+         update customers set customer_id=?,customer_name=? where id=?
+     */
     @Test
     void testUpdate() {
         Customer customer = customerRepository.findByCustomerId("A001")
