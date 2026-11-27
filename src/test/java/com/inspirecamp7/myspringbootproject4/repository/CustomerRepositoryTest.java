@@ -43,7 +43,8 @@ class CustomerRepositoryTest {
         Customer customer = customerRepository.findByCustomerId("A001")
                 .orElseGet(() -> new Customer());
         customer.setCustomerName("SpringA");
-        customerRepository.save(customer);
+        Customer updatedCustomer = customerRepository.save(customer);
+        assertThat(updatedCustomer.getCustomerName()).isEqualTo("SpringA");
     }
     
     //2.Customer 조회 ( 값이 일치하는 Customer 존재하는 경우 )
