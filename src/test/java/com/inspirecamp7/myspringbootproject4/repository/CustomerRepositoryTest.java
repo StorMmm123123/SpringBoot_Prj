@@ -51,7 +51,7 @@ class CustomerRepositoryTest {
         //함수형인터페이스 Supplier 추상메서드 T get()
         Customer customer = customerRepository.findByCustomerId("B001")  //Optional<Customer>
                 .orElseGet(() -> new Customer());
-
+        assertThat(customer).isNotNull();
     }
 
 }
